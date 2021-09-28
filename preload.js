@@ -3,7 +3,7 @@ const os = require('os')
 const path = require('path')
 const RPC = require('discord-rpc')
 const openExplorer = require('open-file-explorer')
-// const keytar = require('keytar')
+ const keytar = require('keytar')
 const { ipcRenderer } = require('electron')
 const { dialog, shell, BrowserWindow } = require('@electron/remote')
 const execSync = require('child_process').execSync
@@ -203,7 +203,7 @@ async function bootClientId(presence, ready) {
 			//if we are loading a presence
 			console.log("loading: ", presence)
 			if (Object.keys(presence).length > 0) {
-				//console.log("loading: ", presence)
+				console.log("loading: ", presence)
 
 				let largeimg = document.getElementById("large-image-input")
 				let smallimg = document.getElementById("small-image-input")
@@ -456,11 +456,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		assembleClient(1000)
 
-		/*const myNotification = new Notification("Discord RPC Maker", {
+		const myNotification = new Notification("Discord RPC Maker", {
 			body: "Your presence has started.",
 			icon: "assets/icon.png",
 			timeoutType: "default",
-		})*/
+		})
 		console.log("started")
 		document.getElementById("stop").removeAttribute("hidden")
 		document.getElementById("pfp").setAttribute("src", "assets/wumpus.gif")
@@ -562,9 +562,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	function savePresence() {
 		filename = saveAsJson()
 		reloadPresences()
-		//document.getElementById("new-presence-button").click()
+		document.getElementById("new-presence-button").click()
 		document.getElementById("del-btn").removeAttribute("disabled")
-		// document.getElementById("file-btn").removeAttribute("disabled")
+		 document.getElementById("file-btn").removeAttribute("disabled")
 		document.getElementById("presence-id").value = filename
 		document.getElementById("test").removeAttribute("disabled")
 	}
@@ -945,7 +945,7 @@ function getImageIdFromName(imgName) {
 
 function notReady() {
 	document.getElementById("test").setAttribute("disabled", "true")
-	//console.log("not ready")
+	console.log("not ready")
 }
 
 function removeAllChildNodes(parent) {
@@ -1022,7 +1022,7 @@ function closeSettingsModal() {
 
 function loadLang(language) {
 
-	//let lang = settings.language
+	let lang = settings.language
 	let source = `.${slash}locales${slash}${language}.json`
 	let lang = JSON.parse(fs.readFileSync(source, 'utf8'))
 	let keys = Object.keys(lang)
@@ -1039,7 +1039,7 @@ function loadLang(language) {
 			}
 		} catch (e) { }
 
-		//document.querySelector(`.lang-${name}`).innerText = item
+		document.querySelector(`.lang-${name}`).innerText = item
 
 	}
 }
